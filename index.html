@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treki Turismo - Ouro Preto Sustentável</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-green: #66743a;
+            --brand-green-dark: #556130;
+            --font-elegant: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-elegant);
+            scroll-behavior: smooth;
+            font-size: 1.1rem;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand, .nav-link {
+            font-family: var(--font-elegant);
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .btn-font {
+            font-family: var(--font-sans);
+            letter-spacing: 0.05em;
+        }
+
+        .hero-background {
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.75)), 
+                        url('https://i.imgur.com/5Nq8uH9.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .google-stars {
+            color: #fbbc04;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .snap-x {
+            scroll-snap-type: x mandatory;
+        }
+
+        .snap-center {
+            scroll-snap-align: center;
+        }
+
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        /* Animações de Revelação (Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animação de Folha nos Botões */
+        .btn-nature {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .btn-nature i.fa-leaf {
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nature:hover i.fa-leaf {
+            left: 15px;
+            opacity: 1;
+        }
+
+        .btn-nature:hover span {
+            padding-left: 12px;
+        }
+
+        /* Estilo para o Texto 5 Estrelas em Destaque */
+        .proudtly-tag {
+            background: linear-gradient(to right, transparent, rgba(102, 116, 58, 0.05), transparent);
+            padding: 20px;
+            border-top: 1px solid rgba(102, 116, 58, 0.1);
+            border-bottom: 1px solid rgba(102, 116, 58, 0.1);
+        }
+
+        /* Classes de cores customizadas */
+        .text-brand { color: var(--brand-green); }
+        .bg-brand { background-color: var(--brand-green); }
+        .border-brand { border-color: var(--brand-green); }
+        .hover-bg-brand:hover { background-color: var(--brand-green-dark); }
+        
+        .btn-hover-green:hover {
+            background-color: var(--brand-green) !important;
+            border-color: var(--brand-green) !important;
+        }
+
+        .tour-detail-img {
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1.5rem;
+        }
+
+        .hero-icon-container {
+            transition: all 0.4s ease;
+            cursor: default;
+        }
+        .hero-icon-container:hover {
+            transform: translateY(-5px);
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+<body class="bg-[#faf9f6] text-gray-900">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-stone-200">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="brand text-3xl font-bold tracking-tighter uppercase italic text-brand">
+                    Treki Turismo
+                </span>
+            </div>
+            
+            <nav class="hidden md:flex gap-10 font-semibold text-sm uppercase tracking-widest nav-link">
+                <a href="#roteiros" class="hover:text-brand transition">Roteiros</a>
+                <a href="#avaliacoes" class="hover:text-brand transition">Avaliações</a>
+                <a href="#contato" class="hover:text-brand transition">Contato</a>
+            </nav>
+
+            <a href="https://wa.me/5531972364489" target="_blank" class="btn-font btn-nature bg-brand text-white px-8 py-3 rounded-full font-bold text-xs hover-bg-brand transition flex items-center justify-center gap-2 shadow-lg">
+                <i class="fas fa-leaf"></i>
+                <span>AGENDAR AGORA</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center text-center text-white hero-background pt-24 pb-12 px-4">
+        <div class="max-w-5xl mx-auto flex flex-col items-center">
+            <h1 class="text-5xl md:text-8xl mb-6 text-balance reveal font-light italic tracking-tighter">
+                Conecte-se com a <br>
+                <span class="text-[#cbd4a9] font-bold not-italic">Alma de Ouro Preto</span>
+            </h1>
+            
+            <p class="text-xl md:text-3xl max-w-2xl mx-auto mb-12 font-light text-stone-100 leading-relaxed italic reveal">
+                Experiências autênticas guiadas pelo respeito ao patrimônio histórico e compromisso com a preservação ambiental.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center w-full md:w-auto reveal">
+                <a href="#roteiros" class="btn-font btn-nature bg-brand text-white px-10 py-5 rounded-full font-bold text-sm hover-bg-brand transition shadow-2xl flex items-center justify-center gap-2">
+                    <i class="fas fa-leaf"></i>
+                    <span>Explorar Roteiros Conscientes</span>
+                </a>
+                <a href="https://share.google/iUO4rD12Yuu8keQDC" target="_blank" class="btn-font bg-white/10 backdrop-blur-md border border-white/30 px-10 py-5 rounded-full font-bold text-sm hover:bg-white/20 transition flex items-center justify-center gap-2">
+                    <i class="fab fa-google text-red-400"></i> Ver Avaliações
+                </a>
+            </div>
+
+            <div class="mt-20 flex items-center gap-12 opacity-80 grayscale brightness-200 reveal">
+                 <div class="hero-icon-container flex flex-col items-center gap-2 hover:text-green-400 hover:grayscale-0 transition-all duration-500">
+                    <i class="fas fa-leaf text-3xl"></i>
+                    <span class="text-[10px] uppercase tracking-[0.2em] btn-font">Sustentável</span>
+                 </div>
+                 <div class="hero-icon-container flex flex-col items-center gap-2 hover:text-amber-500 hover:grayscale-0 transition-all duration-500">
+                    <i class="fas fa-landmark text-3xl"></i>
+                    <span class="text-[10px] uppercase tracking-[0.2em] btn-font">Preservação</span>
+                 </div>
+                 <div class="hero-icon-container flex flex-col items-center gap-2 hover:text-sky-400 hover:grayscale-0 transition-all duration-500">
+                    <i class="fas fa-mountain text-3xl"></i>
+                    <span class="text-[10px] uppercase tracking-[0.2em] btn-font">Ecoturismo</span>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roteiros Section -->
+    <section id="roteiros" class="py-24 bg-[#faf9f6]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-6xl font-bold text-stone-900 mb-6 uppercase tracking-tight">Roteiros em Harmonia</h2>
+                <p class="text-stone-500 max-w-xl mx-auto italic text-xl">Experiências mediadas por quem vive e cuida da cidade.</p>
+                <div class="w-24 h-0.5 bg-brand mx-auto mt-8 opacity-30"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Roteiro 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden card-shadow flex flex-col border border-stone-100 reveal">
+                    <div class="h-80 overflow-hidden relative">
+                        <img src="https://i.imgur.com/w0l0hPS.png" alt="Parque das Andorinhas" class="w-full h-full object-cover">
+                        <div class="absolute top-6 left-6 btn-font bg-brand text-white text-[9px] font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-widest">Ambiental</div>
+                    </div>
+                    <div class="p-10 flex-grow">
+                        <h3 class="text-3xl font-bold mb-6">Parque das Andorinhas</h3>
+                        <p class="text-stone-600 text-lg leading-relaxed mb-8">Jornada consciente pelas principais nascentes, focada no baixo impacto e na pura contemplação da biodiversidade mineira.</p>
+                        <div class="flex items-center gap-6 text-xs font-bold text-brand btn-font uppercase">
+                            <span><i class="fas fa-walking mr-2"></i> Leve</span>
+                            <span><i class="fas fa-clock mr-2"></i> 4 Horas</span>
+                        </div>
+                    </div>
+                    <div class="p-10 pt-0 flex flex-col gap-3">
+                        <a href="https://wa.me/5531972364489" target="_blank" class="btn-font btn-nature btn-hover-green w-full py-4 bg-stone-900 text-white text-center rounded-xl font-bold transition uppercase text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-leaf"></i>
+                            <span>AGENDAR AGORA</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Roteiro 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden card-shadow border-2 border-stone-100 flex flex-col relative md:scale-105 z-10 shadow-2xl reveal">
+                    <div class="h-80 overflow-hidden relative">
+                        <img src="https://i.imgur.com/qHEbj5n.png" alt="Roteiro Histórico" class="w-full h-full object-cover">
+                        <div class="absolute top-6 left-6 btn-font bg-stone-900 text-white text-[9px] font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-widest">Patrimônio</div>
+                    </div>
+                    <div class="p-10 flex-grow">
+                        <h3 class="text-3xl font-bold mb-6 text-brand">Roteiro Histórico</h3>
+                        <p class="text-stone-600 text-lg leading-relaxed mb-8 italic">Acompanhamento de Historiador especializado. Entenda como o passado barroco molda nosso presente sustentável.</p>
+                        <ul class="text-sm space-y-3 text-stone-500 btn-font font-medium uppercase tracking-tight">
+                            <li><i class="fas fa-circle text-[6px] text-brand mr-3 align-middle"></i> Matrizes e Capelas</li>
+                            <li><i class="fas fa-circle text-[6px] text-brand mr-3 align-middle"></i> Minas de Ouro Seculares</li>
+                            <li><i class="fas fa-circle text-[6px] text-brand mr-3 align-middle"></i> Caminhos de Tiradentes</li>
+                        </ul>
+                    </div>
+                    <div class="p-10 pt-0 flex flex-col gap-3">
+                        <a href="https://wa.me/5531972364489" target="_blank" class="btn-font btn-nature w-full py-5 bg-brand text-white text-center rounded-xl font-bold hover-bg-brand transition uppercase shadow-xl flex items-center justify-center gap-2">
+                            <i class="fas fa-leaf"></i>
+                            <span>AGENDAR AGORA</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Roteiro 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden card-shadow flex flex-col border border-stone-100 reveal">
+                    <div class="h-80 overflow-hidden relative">
+                        <img src="https://i.imgur.com/tsdkwrG.png" alt="Cachoeiras do Itacolomi" class="w-full h-full object-cover">
+                        <div class="absolute top-6 left-6 btn-font bg-brand text-white text-[9px] font-bold px-4 py-1.5 rounded-full shadow-lg uppercase tracking-widest">Ecológico</div>
+                    </div>
+                    <div class="p-10 flex-grow">
+                        <h3 class="text-3xl font-bold mb-6">Cachoeiras do Itacolomi</h3>
+                        <p class="text-stone-600 text-lg leading-relaxed mb-8">Trilha interpretativa pela Serra do Itacolomi. Conheça as águas sagradas e a importância vital da nossa biodiversidade.</p>
+                        <div class="flex items-center gap-6 text-xs font-bold text-brand btn-font uppercase">
+                            <span><i class="fas fa-walking mr-2"></i> Médio</span>
+                            <span><i class="fas fa-water mr-2"></i> Purificação</span>
+                        </div>
+                    </div>
+                    <div class="p-10 pt-0 flex flex-col gap-3">
+                        <a href="https://wa.me/5531972364489" target="_blank" class="btn-font btn-nature btn-hover-green w-full py-4 bg-stone-900 text-white text-center rounded-xl font-bold transition uppercase text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-leaf"></i>
+                            <span>AGENDAR AGORA</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Reviews Section -->
+    <section id="avaliacoes" class="py-24 bg-stone-100 overflow-hidden">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-20 gap-8 reveal">
+                <div class="text-left">
+                    <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4 italic leading-tight">Vozes de Quem <br>Viveu a Experiência</h2>
+                    <div class="flex items-center gap-4">
+                        <span class="text-3xl font-bold text-brand">5.0</span>
+                        <div class="google-stars text-2xl">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-stone-400 text-sm btn-font uppercase tracking-widest">(+300 Avaliações)</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex gap-4">
+                    <button onclick="scrollCarousel(-340)" class="w-14 h-14 rounded-full bg-white border border-stone-200 flex items-center justify-center hover:bg-stone-900 hover:text-white transition shadow-sm">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="scrollCarousel(340)" class="w-14 h-14 rounded-full bg-white border border-stone-200 flex items-center justify-center hover:bg-stone-900 hover:text-white transition shadow-sm">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Review Cards Carousel -->
+            <div id="review-carousel" class="flex gap-6 overflow-x-auto snap-x hide-scrollbar pb-12 px-2 reveal">
+                
+                <!-- 1 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">M</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Mariana Silva</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Passeio Histórico</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"O foco na preservação é evidente. Aprendi não só sobre as igrejas, mas sobre como cuidar do patrimônio. Treki é essencial!"</p>
+                </div>
+
+                <!-- 2 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">R</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Ricardo Mendes</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Ecoturismo</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"Passeio nas Andorinhas respeitando cada centímetro da natureza. O guia foi sensacional ao explicar a fauna local."</p>
+                </div>
+
+                <!-- 3 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">C</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Clara Rocha</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Família</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"Experiência educativa e emocionante. Meus filhos entenderam a importância de manter Ouro Preto viva para o futuro."</p>
+                </div>
+
+                <!-- 4 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">F</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Fernando Costa</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Aventura</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"A trilha do Itacolomi é desafiadora mas revigorante. Equipe preparada tecnicamente. Segurança nota 10."</p>
+                </div>
+
+                <!-- 5 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">J</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Juliana Santos</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Ecoturismo</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"Simplesmente perfeito! O guia historiador deu uma aula sobre a preservação ambiental da região."</p>
+                </div>
+
+                <!-- 6 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">P</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Pedro Oliveira</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Histórico</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"O Roteiro Histórico é obrigatório. Muita sabedoria e conhecimento compartilhado pela equipe."</p>
+                </div>
+
+                <!-- 7 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">A</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Ana Luiza</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Família</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"Experiência incrível para as crianças. O contato com a natureza e a história é muito bem equilibrado."</p>
+                </div>
+
+                <!-- 8 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">G</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Gustavo Lima</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Aventura</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"Treki Turismo é sinônimo de segurança e conhecimento técnico. Itacolomi foi o ponto alto da viagem."</p>
+                </div>
+
+                <!-- 9 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">B</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Beatriz Costa</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Casal</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"Atendimento impecável. Super recomendo para casais que buscam roteiros tranquilos e profundos."</p>
+                </div>
+
+                <!-- 10 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">T</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Thiago Ferreira</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Grupo</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"A melhor experiência em Ouro Preto. Educados, pontuais e muito profundos na explicação histórica."</p>
+                </div>
+
+                <!-- 11 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">L</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Lucas Amado</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Patrimônio</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"Incrível ver como a Treki valoriza os guias locais. O roteiro histórico foi emocionante e muito bem fundamentado."</p>
+                </div>
+
+                <!-- 12 -->
+                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">S</div>
+                        <div class="text-left">
+                            <p class="font-bold text-stone-900 text-base">Sofia Neves</p>
+                            <p class="text-[10px] text-stone-400 btn-font uppercase">Ecoturismo</p>
+                        </div>
+                    </div>
+                    <div class="google-stars text-xs mb-4 text-left">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-base leading-relaxed italic flex-grow text-left">"As cachoeiras do Itacolomi são de tirar o fôlego. O guia foi super atencioso com a segurança e o meio ambiente."</p>
+                </div>
+
+            </div>
+            
+            <div class="mt-16 reveal">
+                <a href="https://share.google/iUO4rD12Yuu8keQDC" target="_blank" class="inline-flex items-center gap-3 bg-white border border-stone-200 px-12 py-5 rounded-full font-bold text-stone-800 hover:bg-stone-50 transition shadow-sm btn-font text-xs">
+                    <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" class="h-5" alt="Google">
+                    VER TODAS NO GOOGLE
+                </a>
+                
+                <div class="mt-8 proudtly-tag">
+                    <p class="text-brand font-bold text-xl md:text-2xl italic tracking-wide">
+                        Orgulhosamente uma empresa <span class="text-stone-800">5 estrelas</span> no Google.
+                    </p>
+                    <p class="text-stone-500 text-base max-w-lg mx-auto leading-relaxed mt-2 italic text-balance">
+                        Dedicada a oferecer a melhor experiência e conexão autêntica para nossos clientes, preservando o patrimônio e a biodiversidade.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Explicação dos Roteiros -->
+            <div class="mt-24 text-left">
+                <div class="w-24 h-0.5 bg-brand mb-12 opacity-30 mx-auto md:mx-0"></div>
+                
+                <h2 class="text-4xl md:text-6xl font-bold text-stone-900 mb-16 uppercase tracking-tight reveal">Nossos Caminhos em Detalhes</h2>
+
+                <div class="space-y-32">
+                    <!-- Detalhe Andorinhas -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center reveal">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-3xl font-bold text-brand mb-6">Parque Municipal das Andorinhas</h3>
+                            <p class="text-stone-600 text-xl leading-relaxed mb-8 text-balance">
+                                O Parque Municipal das Andorinhas é uma região de extremo valor histórico para a cidade de Ouro Preto. Visitaremos as principais cachoeiras que compõem o parque, desfrutando da natureza e essência local.
+                            </p>
+                            <div class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm">
+                                <h4 class="btn-font uppercase text-xs font-bold text-stone-400 tracking-widest mb-4">Principais Atrativos:</h4>
+                                <ul class="space-y-3 text-lg italic text-stone-700">
+                                    <li class="flex items-center gap-3"><i class="fas fa-water text-brand"></i> Cachoeira das Andorinhas</li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-mountain text-brand"></i> Mirante Pedra do Jacaré</li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-water text-brand"></i> Cachoeira dos Pelados</li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-water text-brand"></i> Cachoeira Véu das Noivas</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/30/1b/54/94/roteiro-andorinhas-ouro.jpg" alt="Cachoeira das Andorinhas" class="tour-detail-img w-full shadow-2xl">
+                        </div>
+                    </div>
+
+                    <!-- Detalhe Histórico -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center reveal">
+                        <div>
+                            <img src="https://i.imgur.com/qHEbj5n.png" alt="Igreja de Ouro Preto" class="tour-detail-img w-full shadow-2xl">
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-brand mb-6">Roteiro Histórico</h3>
+                            <p class="text-stone-600 text-xl leading-relaxed mb-8 text-balance">
+                                O Roteiro Histórico será mediado por um Historiador especializado que ficará responsável pela a explicação e contextualização de toda a história que envolve a cidade!
+                            </p>
+                            <div class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm">
+                                <h4 class="btn-font uppercase text-xs font-bold text-stone-400 tracking-widest mb-4">Monumentos e Visitações:</h4>
+                                <ul class="space-y-3 text-lg italic text-stone-700">
+                                    <li class="flex items-center gap-3"><i class="fas fa-church text-brand"></i> Igreja Matriz Nossa Senhora do Pilar</li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-church text-brand"></i> Igreja São Francisco de Assis</li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-church text-brand"></i> Igreja Matriz de Nossa Senhora da Conceição</li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-gem text-brand"></i> Antiga Mina de Ouro</li>
+                                    <li class="pt-2 text-brand font-bold text-sm btn-font uppercase tracking-tighter">(Visitação de grande parte do centro histórico)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detalhe Itacolomi -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center reveal">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-3xl font-bold text-brand mb-6">Cachoeiras do Itacolomi</h3>
+                            <p class="text-stone-600 text-xl leading-relaxed mb-8 text-balance">
+                                As Cachoeiras do Itacolomi compõem a importante serra do Itacolomi local de muito valor para a história de Ouro Preto! Desfrutando da imersão na natureza acompanhada de muita sabedoria local visitaremos duas das cachoeiras mais sagradas da região.
+                            </p>
+                            <div class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm">
+                                <h4 class="btn-font uppercase text-xs font-bold text-stone-400 tracking-widest mb-4">Atrativos Naturais:</h4>
+                                <ul class="space-y-3 text-lg italic text-stone-700">
+                                    <li class="flex items-center gap-3"><i class="fas fa-snowflake text-brand"></i> Cachoeira da Geladeira</li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-wind text-brand"></i> Cachoeira das Vozes</li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-hiking text-brand"></i> Mirante Serra Itacolomi</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="https://i.imgur.com/TPLmezK.png" alt="Pico do Itacolomi" class="tour-detail-img w-full shadow-2xl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato" class="bg-stone-950 text-white py-24">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-20 mb-20">
+                <div>
+                    <span class="brand text-3xl font-bold tracking-tighter uppercase italic text-brand">
+                        Treki Turismo
+                    </span>
+                    <p class="mt-8 text-stone-400 text-lg leading-relaxed italic">Nossa missão é preservar a história através de visitas conscientes e responsáveis em Ouro Preto.</p>
+                    <div class="flex gap-6 mt-10">
+                        <a href="https://www.instagram.com/trekiturismo" target="_blank" class="w-12 h-12 rounded-full border border-stone-800 flex items-center justify-center hover:border-brand hover:text-brand transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://share.google/iUO4rD12Yuu8keQDC" target="_blank" class="w-12 h-12 rounded-full border border-stone-800 flex items-center justify-center hover:border-red-600 hover:text-red-600 transition"><i class="fab fa-google"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-brand font-bold text-xl mb-10 btn-font uppercase tracking-widest text-xs">Compromisso Consciente</h4>
+                    <div class="space-y-6">
+                        <a href="https://wa.me/5531972364489" class="flex items-center gap-4 text-stone-300 hover:text-brand transition text-lg">
+                            <i class="fab fa-whatsapp text-brand text-2xl"></i> (31) 97236-4489
+                        </a>
+                        <div class="flex items-center gap-4 text-stone-300 text-lg italic">
+                             <i class="fas fa-recycle text-brand"></i> Lixo Zero nas Trilhas
+                        </div>
+                        <div class="flex items-center gap-4 text-stone-300 text-lg italic">
+                            <i class="fas fa-hands-helping text-brand"></i> Apoio ao Guia Local
+                       </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-xl mb-10 btn-font uppercase tracking-widest text-xs">Onde Estamos</h4>
+                    <p class="text-stone-400 text-lg leading-relaxed italic">
+                        R. São José, 14 - Centro,<br>
+                        Ouro Preto - MG, 35400-000
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-stone-900 pt-12 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] text-stone-600 btn-font uppercase tracking-[0.2em]">
+                <p>© 2026 Treki Turismo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5531972364489" target="_blank" class="fixed bottom-10 right-10 bg-brand text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-50 hover-bg-brand transition transform hover:scale-110 shadow-stone-900/20 btn-nature">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+        function scrollCarousel(distance) {
+            const carousel = document.getElementById('review-carousel');
+            carousel.scrollBy({
+                left: distance,
+                behavior: 'smooth'
+            });
+        }
+
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            revealObserver.observe(element);
+        });
+    </script>
+
+</body>
+</html>
