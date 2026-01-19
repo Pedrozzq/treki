@@ -43,6 +43,14 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Correção para mobile: desativa o background-attachment: fixed que causa erro de renderização */
+        @media (max-width: 1024px) {
+            .hero-background {
+                background-attachment: scroll;
+            }
         }
 
         .card-shadow {
