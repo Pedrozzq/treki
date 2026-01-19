@@ -156,11 +156,12 @@
 </head>
 <body class="bg-[#faf9f6] text-gray-900">
 
-    <!-- Header com cor de fundo #fcf7eb -->
+    <!-- Header com cor de fundo #fcf7eb e altura aumentada para logo maior -->
     <header class="fixed w-full z-50 bg-[#fcf7eb] border-b border-stone-200">
-        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="container mx-auto px-6 h-28 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <img src="https://i.imgur.com/D6yhL7Z.png" alt="Treki Turismo" class="h-14 w-auto object-contain">
+                <!-- Logo aumentada para h-20 (80px) ou h-24 no desktop -->
+                <img src="https://i.imgur.com/D6yhL7Z.png" alt="Treki Turismo" class="h-20 md:h-24 w-auto object-contain transition-all">
             </div>
             
             <nav class="hidden md:flex gap-10 font-semibold text-sm uppercase tracking-widest nav-link">
@@ -176,12 +177,12 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center text-center text-white hero-background pt-24 pb-12 px-4">
+    <!-- Hero Section - pt ajustado para compensar header maior -->
+    <section class="relative min-h-screen flex items-center justify-center text-center text-white hero-background pt-32 pb-12 px-4">
         <div class="max-w-5xl mx-auto flex flex-col items-center">
             <h1 class="text-5xl md:text-8xl mb-6 text-balance reveal font-light italic tracking-tighter">
                 Conecte-se com a <br>
-                <span class="text-[#cbd4a9] font-bold not-italic">Alma de Ouro Preto</span>
+                <span class="text-[#cbd4a9] font-bold not-italic">Essência de Ouro Preto</span>
             </h1>
             
             <p class="text-xl md:text-3xl max-w-2xl mx-auto mb-12 font-light text-stone-100 leading-relaxed italic reveal">
@@ -321,7 +322,7 @@
             </div>
 
             <div id="review-carousel" class="flex gap-6 overflow-x-auto snap-x hide-scrollbar pb-12 px-2 reveal text-left">
-                <!-- 1 -->
+                <!-- 12 Depoimentos completos e padrão -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">M</div>
@@ -330,7 +331,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"O foco na preservação é evidente. Aprendi não só sobre as igrejas, mas sobre como cuidar do patrimônio. Treki é essencial!"</p>
                 </div>
-                <!-- 2 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">R</div>
@@ -339,7 +339,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"Passeio nas Andorinhas respeitando cada centímetro da natureza. O guia foi sensacional ao explicar a fauna local."</p>
                 </div>
-                <!-- 3 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">C</div>
@@ -348,7 +347,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"Experiência educativa e emocionante. Meus filhos entenderam a importância de manter Ouro Preto viva."</p>
                 </div>
-                <!-- 4 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">F</div>
@@ -357,7 +355,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"A trilha do Itacolomi é revigorante. Equipe preparada tecnicamente e focada na segurança."</p>
                 </div>
-                <!-- 5 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">J</div>
@@ -366,7 +363,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"Perfeito! O foco na preservação ambiental é o que diferencia a Treki de todas as outras."</p>
                 </div>
-                <!-- 6 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">P</div>
@@ -375,7 +371,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"O guia historiador deu uma aula real. Conhecimento profundo sobre cada detalhe de Ouro Preto."</p>
                 </div>
-                <!-- 7 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">A</div>
@@ -384,7 +379,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"Melhor agência! Tudo muito bem organizado e o compromisso sustentável é levado a sério."</p>
                 </div>
-                <!-- 8 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">G</div>
@@ -393,7 +387,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"Visita incrível às cachoeiras. Respeito total às trilhas e sabedoria local impecável."</p>
                 </div>
-                <!-- 9 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">B</div>
@@ -402,7 +395,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"Passeio romântico e educativo. Adoramos a forma como a história é contada."</p>
                 </div>
-                <!-- 10 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">T</div>
@@ -411,7 +403,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"Equipe nota 10. Pontualidade e atenção redobrada com todos do grupo."</p>
                 </div>
-                <!-- 11 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">L</div>
@@ -420,7 +411,6 @@
                     <div class="google-stars text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-stone-600 text-base leading-relaxed italic flex-grow">"Diferente de tudo que já fiz. A Treki traz uma alma para o passeio que poucas fazem."</p>
                 </div>
-                <!-- 12 -->
                 <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-sm border border-stone-50 snap-center flex flex-col card-shadow">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-12 h-12 bg-stone-100 text-brand rounded-full flex items-center justify-center font-bold text-lg">S</div>
@@ -475,7 +465,7 @@
                         </div>
                     </div>
 
-                    <!-- Detalhe Histórico (RESTAURADO) -->
+                    <!-- Detalhe Histórico -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center reveal">
                         <div>
                             <img src="https://i.imgur.com/qHEbj5n.png" alt="Igreja de Ouro Preto" class="tour-detail-img w-full shadow-2xl">
@@ -498,7 +488,7 @@
                         </div>
                     </div>
 
-                    <!-- Detalhe Itacolomi (RESTAURADO) -->
+                    <!-- Detalhe Itacolomi -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center reveal">
                         <div class="order-2 md:order-1">
                             <h3 class="text-3xl font-bold text-brand mb-6">Cachoeiras do Itacolomi</h3>
