@@ -113,22 +113,26 @@
             border-radius: 1.5rem;
         }
 
-        /* Ocultar elementos indesejados do Widget Elfsight e marca d'água */
-        [class*="elfsight-app"] > div > a,
+        /* Ocultar elementos indesejados do Widget Elfsight e marca d'água de forma agressiva */
         [class*="elfsight-app"] a[href*="elfsight.com"], 
-        [class*="WidgetTitle__Header"],
-        [class*="Header__Container"],
-        [class*="Header__Title"],
+        [class*="elfsight-app"] [class*="WidgetTitle__Header"],
+        [class*="elfsight-app"] [class*="Header__Container"],
+        [class*="elfsight-app"] [class*="Header__Title"],
         [class*="elfsight-app"] [class*="Header__Name"],
         [class*="elfsight-app"] [class*="Header__ReviewsCount"],
-        [class*="elfsight-app"] [class*="Header__ButtonContainer"] {
+        [class*="elfsight-app"] [class*="Header__ButtonContainer"],
+        [class*="elfsight-app"] [class*="BadgeContainer"],
+        [class*="elfsight-app"] > div > a,
+        [class*="elfsight-app"] > a {
             display: none !important;
             opacity: 0 !important;
             visibility: hidden !important;
             height: 0 !important;
+            width: 0 !important;
             padding: 0 !important;
             margin: 0 !important;
             pointer-events: none !important;
+            position: absolute !important;
         }
     </style>
 </head>
@@ -161,7 +165,7 @@
         <div class="max-w-5xl mx-auto flex flex-col items-center">
             <h1 class="text-5xl md:text-8xl mb-6 text-balance reveal font-light italic tracking-tighter">
                 Conecte-se com a <br>
-                <span class="text-[#cbd4a9] font-bold not-italic">Alma de Ouro Preto</span>
+                <span class="text-[#cbd4a9] font-bold not-italic">Essência de Ouro Preto</span>
             </h1>
             
             <p class="text-xl md:text-3xl max-w-2xl mx-auto mb-12 font-light text-stone-100 leading-relaxed italic reveal">
@@ -307,6 +311,7 @@
 
             <!-- Elfsight Google Reviews Widget -->
             <div class="reveal">
+                <!-- Elfsight Google Reviews | Untitled Google Reviews -->
                 <div class="elfsight-app-6f399a56-d230-4060-809b-39d14115b4fa" data-elfsight-app-lazy></div>
             </div>
             
