@@ -113,21 +113,25 @@
             border-radius: 1.5rem;
         }
 
-        /* Ocultar elementos indesejados do Widget Elfsight e marca d'água de forma agressiva */
+        /* REGRAS AGRESSIVAS PARA OCULTAR BRANDING E PAINEL ADMIN DO ELFSIGHT 
+           Isso oculta o link de crédito, o título do widget e o painel que apenas o dono vê.
+        */
         [class*="elfsight-app"] a[href*="elfsight.com"], 
-        [class*="elfsight-app"] [class*="WidgetTitle__Header"],
+        [class*="elfsight-app"] [class*="WidgetTitle"],
         [class*="elfsight-app"] [class*="Header__Container"],
         [class*="elfsight-app"] [class*="Header__Title"],
         [class*="elfsight-app"] [class*="Header__Name"],
         [class*="elfsight-app"] [class*="Header__ReviewsCount"],
         [class*="elfsight-app"] [class*="Header__ButtonContainer"],
         [class*="elfsight-app"] [class*="BadgeContainer"],
-        [class*="elfsight-app"] [class*="SocialProof__Container"],
-        [class*="elfsight-app"] [class*="Common__MainContainer"] > a,
-        [class*="elfsight-app"] div[class*="CopyrightContainer"],
+        [class*="elfsight-app"] [class*="SocialProof"],
+        [class*="elfsight-app"] [class*="Toolbar"],
+        [class*="elfsight-app"] [class*="Panel"],
+        [class*="elfsight-app"] [class*="Copyright"],
+        [class*="elfsight-app"] [class*="ControlPanel"],
+        [class*="elfsight-app"] div[style*="z-index: 999999"],
         [class*="elfsight-app"] > div > a,
-        [class*="elfsight-app"] > a,
-        div[class*="elfsight-app"] div div:last-child > a {
+        [class*="elfsight-app"] > a {
             display: none !important;
             opacity: 0 !important;
             visibility: hidden !important;
@@ -137,6 +141,7 @@
             margin: 0 !important;
             pointer-events: none !important;
             position: absolute !important;
+            overflow: hidden !important;
         }
     </style>
 </head>
@@ -179,7 +184,7 @@
             <div class="flex flex-col md:flex-row gap-6 justify-center w-full md:w-auto reveal">
                 <a href="#roteiros" class="btn-font btn-nature bg-brand text-white px-10 py-5 rounded-full font-bold text-sm hover-bg-brand transition shadow-2xl flex items-center justify-center gap-2">
                     <i class="fas fa-leaf"></i>
-                    <span>Roteiros</span>
+                    <span>Explorar Roteiros</span>
                 </a>
                 <a href="https://share.google/iUO4rD12Yuu8keQDC" target="_blank" class="btn-font bg-white/10 backdrop-blur-md border border-white/30 px-10 py-5 rounded-full font-bold text-sm hover:bg-white/20 transition flex items-center justify-center gap-2">
                     <i class="fab fa-google text-red-400"></i> Ver Avaliações
@@ -315,7 +320,6 @@
 
             <!-- Elfsight Google Reviews Widget -->
             <div class="reveal">
-                <!-- Elfsight Google Reviews | Untitled Google Reviews -->
                 <div class="elfsight-app-6f399a56-d230-4060-809b-39d14115b4fa" data-elfsight-app-lazy></div>
             </div>
             
@@ -470,5 +474,3 @@
     </script>
 </body>
 </html>
-
-
