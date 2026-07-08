@@ -55,30 +55,26 @@
             transition: opacity .8s ease, visibility .8s ease;
         }
         #preloader.done { opacity: 0; visibility: hidden; }
-        .pl-scene { position: relative; width: 280px; height: 170px; }
+        .pl-scene { position: relative; width: 280px; height: 170px; box-shadow: 0 25px 60px rgba(0,0,0,.5); border-radius: 16px; }
         .pl-scene svg { position: absolute; inset: 0; width: 280px; height: 170px; overflow: visible; }
 
-        .pl-range { fill: rgba(255,255,255,.09); opacity: 0; transform: translateY(24px); animation: plRise .9s cubic-bezier(.2,.7,.2,1) forwards .1s; }
-        .pl-range.front { fill: rgba(0,0,0,.28); animation-delay: .3s; }
-        @keyframes plRise { to { opacity: 1; transform: translateY(0); } }
+        /* Pico do Itacolomi — foto real, moldura arredondada (sem recorte irregular) */
+        .pl-peak-photo { opacity: 0; transform: scale(1.08); transform-origin: center; animation: plPeakRise 1.1s cubic-bezier(.2,.7,.2,1) forwards .3s; }
+        @keyframes plPeakRise { to { opacity: 1; transform: scale(1.08); } }
+        .pl-peak-shade { opacity: 0; animation: plFadeIn .9s ease forwards .55s; }
 
-        .pl-snow { fill: rgba(255,255,255,.5); opacity: 0; animation: plFadeIn .8s ease forwards .8s; }
-
-        .pl-sun { fill: #eaf0cd; opacity: 0; transform: translateY(34px); animation: plSun 1.6s cubic-bezier(.2,.7,.2,1) forwards .35s; }
-        @keyframes plSun { to { opacity: .95; transform: translateY(0); } }
-
-        .pl-trail { fill: none; stroke: rgba(234,240,205,.85); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 5 7; opacity: 0; animation: plFadeIn .6s ease forwards .5s; }
+        .pl-trail { fill: none; stroke: rgba(234,240,205,.9); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 5 7; opacity: 0; animation: plFadeIn .6s ease forwards .5s; }
 
         .pl-hiker {
             position: absolute; left: 0; top: 0; color: #fff; font-size: 20px;
-            offset-path: path('M24,152 C70,150 84,126 108,116 C140,102 156,92 176,70 C184,61 190,57 194,52');
+            offset-path: path('M22,150 C56,148 42,118 80,106 C118,94 100,58 144,20');
             offset-anchor: 50% 92%; offset-rotate: 0deg; offset-distance: 0%; opacity: 0;
-            filter: drop-shadow(0 3px 4px rgba(0,0,0,.55));
-            animation: plHike 2.8s cubic-bezier(.33,0,.2,1) forwards .5s;
+            filter: drop-shadow(0 3px 4px rgba(0,0,0,.6));
+            animation: plHike 3s cubic-bezier(.33,0,.2,1) forwards .5s;
         }
-        @keyframes plHike { 0%{ offset-distance:0%; opacity:0 } 12%{ opacity:1 } 100%{ offset-distance:100%; opacity:1 } }
+        @keyframes plHike { 0%{ offset-distance:0%; opacity:0 } 10%{ opacity:1 } 100%{ offset-distance:100%; opacity:1 } }
 
-        .pl-flag { position: absolute; left: 198px; top: 22px; color: #cbd4a9; font-size: 17px; opacity: 0; transform: scale(.3); transform-origin: bottom left; animation: plFlag .55s cubic-bezier(.34,1.56,.64,1) forwards 3.2s; }
+        .pl-flag { position: absolute; left: 142px; top: 4px; color: #cbd4a9; font-size: 17px; opacity: 0; transform: scale(.3); transform-origin: bottom left; animation: plFlag .55s cubic-bezier(.34,1.56,.64,1) forwards 3.4s; }
         @keyframes plFlag { to { opacity: 1; transform: scale(1); } }
 
         .pl-logo { width: 150px; height: auto; margin-top: 2.2rem; opacity: 0; animation: plFadeIn .9s ease forwards 1.1s; filter: drop-shadow(0 10px 24px rgba(0,0,0,.4)); }
@@ -88,39 +84,7 @@
         @keyframes plBlink { 0%,100%{ opacity:.2 } 50%{ opacity:1 } }
         @keyframes plFadeIn { to { opacity: 1; } }
 
-        /* ================= TREK PROGRESS — CAMINHADA AO ROLAR ================= */
-        #trek-progress {
-            position: fixed; left: 24px; top: 96px; bottom: 96px; width: 2px; z-index: 40;
-            pointer-events: none; opacity: 0; transition: opacity .5s ease;
-        }
-        #trek-progress.show { opacity: 1; }
-        .trek-line { position: absolute; inset: 0; width: 2px;
-            background: repeating-linear-gradient(to bottom, rgba(102,116,58,.45) 0 5px, transparent 5px 12px); }
-        .trek-fill { position: absolute; top: 0; left: 0; width: 2px; height: 0;
-            background: var(--brand-green); transition: height .1s linear; }
-        .trek-print { position: absolute; left: 50%; color: var(--brand-green); font-size: .6rem;
-            opacity: .12; transition: opacity .35s ease; }
-        .trek-print.active { opacity: .6; }
-        .trek-hiker {
-            position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%);
-            width: 34px; height: 34px; border-radius: 50%; background: var(--cream);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--brand-green); font-size: 1.05rem;
-            box-shadow: 0 6px 16px rgba(42,42,36,.18); border: 1px solid rgba(63,74,41,.15);
-            transition: top .12s linear;
-        }
-        #trek-progress.walking .trek-hiker i { animation: trekWalk .42s ease-in-out infinite; }
-        @keyframes trekWalk { 0%,100%{ transform: translateY(0) rotate(-4deg); } 50%{ transform: translateY(-3px) rotate(5deg); } }
-        @media (max-width: 640px) {
-            #trek-progress { left: 10px; top: 80px; bottom: 84px; }
-            .trek-hiker { width: 28px; height: 28px; font-size: .9rem; }
-        }
-
-        /* Reveal em "passos" — vem de baixo como quem sobe a trilha */
-        .step-reveal { opacity: 0; transform: translateY(48px) scale(.98); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
-        .step-reveal.active { opacity: 1; transform: translateY(0) scale(1); }
-
-        /* ================= LINKTREE / HERO — FUNDO DA FOTO ================= */
+        /* ================= LINKTREE / HERO — ANIMAÇÃO PREMIUM DE TREKKING ================= */
         .linktree {
             position: relative;
             min-height: 100vh;
@@ -130,11 +94,40 @@
             justify-content: center;
             padding: 5rem 1.25rem 4.5rem;
             overflow: hidden;
-            background:
-                linear-gradient(rgba(28,34,22,0.55), rgba(20,25,14,0.82)),
-                url('https://i.imgur.com/5Nq8uH9.png');
-            background-size: cover;
-            background-position: center;
+        }
+
+        /* Foto de fundo com respiração cinematográfica (Ken Burns contínuo) */
+        .linktree-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background: url('https://i.imgur.com/5Nq8uH9.png') center/cover no-repeat;
+            animation: heroZoom 28s ease-in-out infinite alternate;
+            will-change: transform;
+        }
+        .linktree-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(rgba(28,34,22,0.55), rgba(20,25,14,0.82));
+        }
+        @keyframes heroZoom { 0% { transform: scale(1) translateY(0); } 100% { transform: scale(1.13) translateY(-1.5%); } }
+
+        /* Trilha que se desenha sozinha sobre as montanhas — assinatura de trekking */
+        .hero-trail { position: absolute; left: 0; right: 0; bottom: 8%; width: 100%; height: 90px; z-index: 3; pointer-events: none; opacity: .8; }
+        .hero-trail path {
+            fill: none; stroke: rgba(234,240,205,.8); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 3 9;
+            stroke-dashoffset: 900; opacity: 0;
+            animation: heroTrailDraw 3.4s cubic-bezier(.4,0,.2,1) forwards .6s;
+        }
+        @keyframes heroTrailDraw { 0% { stroke-dashoffset: 900; opacity: 0; } 4% { opacity: .8; } 100% { stroke-dashoffset: 0; opacity: .8; } }
+        .hero-trail-marker {
+            position: absolute; z-index: 4; width: 11px; height: 11px; border-radius: 50%;
+            background: #eaf0cd; opacity: 0; pointer-events: none;
+            animation: heroMarkerIn .5s ease forwards 3.9s, heroMarkerPulse 2.6s ease-in-out infinite 4.1s;
+        }
+        @keyframes heroMarkerIn { to { opacity: 1; } }
+        @keyframes heroMarkerPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(234,240,205,.6); } 60% { box-shadow: 0 0 0 16px rgba(234,240,205,0); } }
+        @media (prefers-reduced-motion: reduce) {
+            .linktree-bg, .hero-trail path, .hero-trail-marker { animation: none; }
+            .hero-trail path { stroke-dashoffset: 0; opacity: .8; }
+            .hero-trail-marker { opacity: 1; }
         }
 
         .fog {
@@ -172,6 +165,7 @@
         .lt-avatar img {
             display: block; width: 100%; height: auto; max-height: 195px;
             object-fit: contain; background: transparent;
+            filter: brightness(0) invert(1) drop-shadow(0 6px 20px rgba(0,0,0,.5));
         }
         @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
@@ -247,21 +241,115 @@
         .detail-img img { width:100%; height:460px; object-fit:cover; transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
         .detail-img:hover img { transform:scale(1.05); }
 
-        /* Efeito "passos" — pegadas caminhando sobre a foto ao aparecer */
-        .foot-trail { position:absolute; inset:0; z-index:2; pointer-events:none; }
-        .foot-trail i {
-            position:absolute; color:#fff; font-size:1.15rem; opacity:0;
-            transform: scale(.4) rotate(var(--r, 0deg));
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,.55));
+        .stat-num { font-family:var(--font-elegant); font-weight:700; font-size:3.4rem; line-height:1; color:var(--brand-green-deep); }
+
+        /* ================= FAIXA DE CONFIANÇA (identidade & credibilidade) ================= */
+        .trust-bar-wrap { position: relative; z-index: 20; margin-top: -3.25rem; margin-bottom: 2.5rem; }
+        .trust-bar {
+            background: #fff; border-radius: 1.5rem; box-shadow: 0 25px 55px rgba(42,42,36,.18);
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            padding: 1.7rem .5rem;
         }
-        .foot-trail.go i { animation: footStep .55s ease forwards; }
-        @keyframes footStep {
-            0%   { opacity:0; transform: scale(.4) rotate(var(--r,0deg)); }
-            45%  { opacity:.95; }
-            100% { opacity:.82; transform: scale(1) rotate(var(--r,0deg)); }
+        .trust-item { flex: 1 1 auto; min-width: 130px; text-align: center; padding: .4rem 1rem; }
+        .trust-num { font-family: var(--font-elegant); font-weight: 700; font-size: 1.85rem; line-height: 1; color: var(--brand-green-deep); }
+        .trust-num i { color: #f5b942; font-size: .95rem; margin-left: .25rem; vertical-align: top; }
+        .trust-item p { color: var(--ink); opacity: .55; margin-top: .5rem; }
+        .trust-sep { width: 1px; height: 36px; background: rgba(63,74,41,.15); }
+        @media (max-width: 768px) { .trust-sep { display: none; } .trust-bar { border-radius: 1.25rem; } .trust-bar-wrap { margin-top: -2rem; } }
+
+        /* ================= RESERVA RÁPIDA (seleção de passeio → WhatsApp) ================= */
+        .booking { width: 100%; max-width: 480px; margin: 0 auto 2rem; text-align: left; }
+        .booking-toggle {
+            position: relative; z-index: 1; width: 100%; display: flex; align-items: center; justify-content: center; gap: .7rem;
+            padding: 1.15rem 1.25rem; border-radius: 999px; font-family: var(--font-sans); font-weight: 700;
+            font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+            background: linear-gradient(135deg, var(--brand-green), var(--brand-green-dark));
+            color: #fff; border: 1px solid rgba(203,212,169,.6);
+            box-shadow: 0 12px 32px rgba(63,74,41,.45);
+            transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .3s, box-shadow .3s;
+            opacity: 0; transform: translateY(24px); animation: btnIn .6s forwards .05s;
+        }
+        .booking-toggle::after {
+            content: ''; position: absolute; inset: 0; border-radius: 999px; z-index: -1; pointer-events: none;
+            box-shadow: 0 0 0 0 rgba(203,212,169,.6);
+            animation: bookingRing 2.4s ease-out infinite;
+        }
+        .booking-toggle:hover { transform: translateY(-4px) scale(1.03); background: linear-gradient(135deg, var(--brand-green-dark), var(--brand-green-deep)); box-shadow: 0 16px 38px rgba(63,74,41,.55); }
+        .booking-toggle i.fa-mountain-sun { font-size: 1.05rem; animation: bookingIconBounce 1.9s ease-in-out infinite; }
+        .booking-toggle i.fa-chevron-down { margin-left: auto; transition: transform .35s ease; font-size: .8rem; }
+        .booking.open .booking-toggle i.fa-chevron-down { transform: rotate(180deg); }
+        @keyframes bookingRing { 0% { box-shadow: 0 0 0 0 rgba(203,212,169,.55); } 70% { box-shadow: 0 0 0 20px rgba(203,212,169,0); } 100% { box-shadow: 0 0 0 0 rgba(203,212,169,0); } }
+        @keyframes bookingIconBounce { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3px) rotate(-6deg); } }
+        @media (prefers-reduced-motion: reduce) {
+            .booking-toggle::after { animation: none; }
+            .booking-toggle i.fa-mountain-sun { animation: none; }
         }
 
-        .stat-num { font-family:var(--font-elegant); font-weight:700; font-size:3.4rem; line-height:1; color:var(--brand-green-deep); }
+        .booking-panel {
+            max-height: 0; overflow: hidden; opacity: 0;
+            transition: max-height .5s cubic-bezier(.2,.7,.2,1), opacity .4s ease, margin .5s ease;
+            margin-top: 0;
+        }
+        .booking.open .booking-panel { max-height: 900px; opacity: 1; margin-top: .9rem; }
+
+        .booking-card {
+            background: rgba(255,255,255,.97); border-radius: 1.5rem; padding: 1.5rem 1.4rem 1.6rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,.3);
+        }
+        .booking-step-label {
+            font-family: var(--font-sans); font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+            font-size: .64rem; color: var(--brand-green-dark); display: flex; align-items: center; gap: .5rem;
+            margin: 1.1rem 0 .6rem;
+        }
+        .booking-step-label:first-child { margin-top: 0; }
+        .booking-step-label span.n {
+            width: 18px; height: 18px; border-radius: 50%; background: var(--brand-green); color: #fff;
+            display: inline-flex; align-items: center; justify-content: center; font-size: .62rem;
+        }
+
+        .tour-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+        .tour-pick {
+            position: relative; border-radius: .9rem; overflow: hidden; aspect-ratio: 4/3; cursor: pointer;
+            border: 2px solid transparent; transition: border-color .25s ease, transform .25s ease;
+        }
+        .tour-pick img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .tour-pick::after {
+            content: attr(data-name); position: absolute; left: 0; right: 0; bottom: 0;
+            padding: .4rem .5rem .35rem; font-family: var(--font-sans); font-weight: 600; font-size: .62rem;
+            color: #fff; text-align: left; line-height: 1.2;
+            background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
+        }
+        .tour-pick:hover { transform: translateY(-2px); }
+        .tour-pick.selected { border-color: var(--brand-green); }
+        .tour-pick.selected::before {
+            content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; top: .4rem; right: .4rem; z-index: 2;
+            width: 22px; height: 22px; border-radius: 50%; background: var(--brand-green); color: #fff;
+            display: flex; align-items: center; justify-content: center; font-size: .68rem;
+        }
+
+        .booking-field {
+            width: 100%; border: 1px solid rgba(63,74,41,.22); border-radius: .8rem;
+            padding: .8rem .95rem; font-family: var(--font-sans); font-size: .92rem; color: var(--ink);
+            background: var(--cream); outline: none; transition: border-color .2s ease, box-shadow .2s ease;
+        }
+        .booking-field:focus { border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(102,116,58,.14); }
+        .booking-row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+        .booking-sublabel {
+            display: block; font-family: var(--font-sans); font-weight: 600; letter-spacing: .06em;
+            text-transform: uppercase; font-size: .6rem; color: var(--ink); opacity: .55; margin-bottom: .35rem;
+        }
+
+        .booking-submit {
+            width: 100%; margin-top: 1.2rem; display: flex; align-items: center; justify-content: center; gap: .7rem;
+            padding: 1.05rem 1.25rem; border-radius: 999px; font-family: var(--font-sans); font-weight: 600;
+            font-size: .76rem; letter-spacing: .12em; text-transform: uppercase;
+            background: #25D366; color: #fff; border: none; cursor: pointer;
+            transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .3s, opacity .3s;
+        }
+        .booking-submit:hover:not(:disabled) { transform: translateY(-3px) scale(1.02); background: #1eb257; }
+        .booking-submit:disabled { opacity: .45; cursor: not-allowed; }
+        .booking-hint { font-size: .68rem; color: var(--ink); opacity: .5; margin-top: .55rem; text-align: center; }
 
         /* Elfsight branding hide */
         [class*="elfsight-app"] a[href*="elfsight.com"],
@@ -298,17 +386,22 @@
     <!-- ============ PRELOADER ============ -->
     <div id="preloader">
         <div class="pl-scene">
-            <svg viewBox="0 0 280 170" preserveAspectRatio="none">
-                <!-- Sol -->
-                <circle class="pl-sun" cx="92" cy="52" r="19"></circle>
-                <!-- Montanha de trás -->
-                <path class="pl-range back" d="M0,170 L0,120 L48,74 L104,120 L150,84 L212,46 L252,92 L280,116 L280,170 Z"></path>
-                <!-- Montanha da frente (cume em 200,40) -->
-                <path class="pl-range front" d="M0,170 L0,142 L58,112 L104,138 L200,40 L238,92 L280,116 L280,170 Z"></path>
-                <!-- Neve no cume -->
-                <path class="pl-snow" d="M200,40 L212,60 L205,62 L200,52 L194,63 L188,60 Z"></path>
-                <!-- Trilha (mesmo caminho do caminhante) -->
-                <path class="pl-trail" d="M24,152 C70,150 84,126 108,116 C140,102 156,92 176,70 C184,61 190,57 194,52"></path>
+            <svg viewBox="0 0 280 170" preserveAspectRatio="none" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <clipPath id="frameClip" clipPathUnits="userSpaceOnUse">
+                        <rect x="0" y="0" width="280" height="170" rx="16" ry="16"></rect>
+                    </clipPath>
+                    <linearGradient id="peakShade" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#141e0e" stop-opacity=".05"></stop>
+                        <stop offset="55%" stop-color="#141e0e" stop-opacity=".15"></stop>
+                        <stop offset="100%" stop-color="#141e0e" stop-opacity=".62"></stop>
+                    </linearGradient>
+                </defs>
+                <!-- Pico do Itacolomi, Ouro Preto/MG — foto real, sem recorte irregular -->
+                <image class="pl-peak-photo" href="https://diaadiaes.com.br/wp-content/uploads/2023/03/pico-do-itacolomi-490x368.jpg" xlink:href="https://diaadiaes.com.br/wp-content/uploads/2023/03/pico-do-itacolomi-490x368.jpg" x="0" y="-37" width="280" height="170" preserveAspectRatio="xMidYMin slice" clip-path="url(#frameClip)"></image>
+                <rect class="pl-peak-shade" x="0" y="0" width="280" height="170" fill="url(#peakShade)" clip-path="url(#frameClip)"></rect>
+                <!-- Trilha do caminhante percorrendo toda a imagem até o topo do pico -->
+                <path class="pl-trail" d="M22,150 C56,148 42,118 80,106 C118,94 100,58 144,20"></path>
             </svg>
             <!-- Caminhante subindo a trilha -->
             <i class="fas fa-person-hiking pl-hiker"></i>
@@ -319,27 +412,70 @@
         <p class="pl-text">Preparando a trilha<span class="dots"><i>.</i><i>.</i><i>.</i></span></p>
     </div>
 
-    <!-- ============ TREK PROGRESS (caminhada ao rolar) ============ -->
-    <div id="trek-progress" aria-hidden="true">
-        <div class="trek-line"></div>
-        <div class="trek-fill"></div>
-        <div class="trek-prints"></div>
-        <div class="trek-hiker"><i class="fas fa-person-hiking"></i></div>
-    </div>
-
-    <!-- ============ LINKTREE / HERO (fundo da foto) ============ -->
+    <!-- ============ LINKTREE / HERO — ANIMAÇÃO PREMIUM DE TREKKING ============ -->
     <section class="linktree" id="topo">
+        <div class="linktree-bg"></div>
         <div class="fog"></div>
+        <svg class="hero-trail" viewBox="0 0 1000 90" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,70 C120,75 200,40 320,48 C440,56 480,20 600,26 C720,32 780,58 880,40 C930,31 960,34 1000,22"></path>
+        </svg>
+        <div class="hero-trail-marker" style="right:3%; bottom:14%;"></div>
         <div class="lt-content">
             <div class="lt-avatar"><img src="https://i.imgur.com/fN9WJDP.png" alt="Treki Turismo"></div>
             <p class="lt-sub">Ecoturismo · Ouro Preto — MG</p>
             <p class="lt-bio">Trilhas, cachoeiras e aventura guiadas por quem vive e cuida da montanha.</p>
 
-            <a href="https://wa.me/5531972364489" target="_blank" class="lt-btn wa pulse d1"><i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp</a>
+            <!-- ===== RESERVA RÁPIDA ===== -->
+            <div class="booking" id="booking">
+                <button type="button" class="booking-toggle" id="bookingToggle" aria-expanded="false">
+                    <i class="fas fa-mountain-sun"></i> Monte seu Passeio <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="booking-panel">
+                    <div class="booking-card">
+                        <p class="booking-step-label"><span class="n">1</span> Escolha o roteiro</p>
+                        <div class="tour-grid" id="tourGrid">
+                            <div class="tour-pick" data-name="Parque das Andorinhas" tabindex="0" role="button" aria-pressed="false">
+                                <img src="https://media-cdn.tripadvisor.com/media/photo-s/30/1b/54/94/roteiro-andorinhas-ouro.jpg" alt="Parque das Andorinhas">
+                            </div>
+                            <div class="tour-pick" data-name="Roteiro Histórico" tabindex="0" role="button" aria-pressed="false">
+                                <img src="https://i.imgur.com/qHEbj5n.png" alt="Roteiro Histórico">
+                            </div>
+                            <div class="tour-pick" data-name="Cachoeiras do Itacolomi" tabindex="0" role="button" aria-pressed="false">
+                                <img src="https://i.imgur.com/TPLmezK.png" alt="Cachoeiras do Itacolomi">
+                            </div>
+                            <div class="tour-pick" data-name="Pico do Itacolomi" tabindex="0" role="button" aria-pressed="false">
+                                <img src="https://i.imgur.com/6k6aVHB.jpeg" alt="Pico do Itacolomi">
+                            </div>
+                        </div>
+
+                        <p class="booking-step-label"><span class="n">2</span> Data do passeio</p>
+                        <input type="date" id="bookingDate" class="booking-field" aria-label="Data do passeio">
+
+                        <p class="booking-step-label"><span class="n">3</span> Seu nome</p>
+                        <div class="booking-row">
+                            <div>
+                                <label class="booking-sublabel" for="bookingName">Nome completo</label>
+                                <input type="text" id="bookingName" class="booking-field" placeholder="Ex: Maria Silva" aria-label="Seu nome">
+                            </div>
+                            <div>
+                                <label class="booking-sublabel" for="bookingPeople">Quantidade de pessoas</label>
+                                <input type="number" id="bookingPeople" class="booking-field" placeholder="Ex: 2" min="1" value="1" aria-label="Número de pessoas">
+                            </div>
+                        </div>
+
+                        <button type="button" id="bookingSubmit" class="booking-submit" disabled>
+                            <i class="fab fa-whatsapp"></i> Enviar Reserva pelo WhatsApp
+                        </button>
+                        <p class="booking-hint">Selecione um roteiro para continuar</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://wa.me/5531972364489" target="_blank" class="lt-btn wa pulse d1"><i class="fab fa-whatsapp"></i> Converse com a Treki</a>
             <a href="#detalhes" class="lt-btn solid d2"><i class="fas fa-mountain-sun"></i> Ver Roteiros &amp; Passeios</a>
-            <a href="https://www.instagram.com/trekiturismo" target="_blank" class="lt-btn d3"><i class="fab fa-instagram"></i> Instagram @trekiturismo</a>
+            <a href="#" id="saveContact" download="Treki-Turismo.vcf" class="lt-btn d3"><i class="fas fa-address-card"></i> Salvar Contato</a>
             <a href="https://share.google/iUO4rD12Yuu8keQDC" target="_blank" class="lt-btn d4"><i class="fab fa-google"></i> Avaliações no Google</a>
-            <a href="#contato" class="lt-btn d5"><i class="fas fa-location-dot"></i> Localização &amp; Contato</a>
+            <a href="https://www.instagram.com/trekiturismo" target="_blank" class="lt-btn d5"><i class="fab fa-instagram"></i> Instagram</a>
 
             <div class="lt-socials">
                 <a href="https://wa.me/5531972364489" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -349,6 +485,33 @@
         </div>
         <a href="#detalhes" class="scroll-cue"><span>Explorar o site</span><i class="fas fa-chevron-down"></i></a>
     </section>
+
+    <!-- ============ FAIXA DE CONFIANÇA (identidade & credibilidade) ============ -->
+    <div class="trust-bar-wrap">
+        <div class="container mx-auto px-6">
+            <div class="trust-bar reveal active">
+                <div class="trust-item">
+                    <div class="trust-num">5<i class="fas fa-star"></i></div>
+                    <p class="micro">Nota no Google</p>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <div class="trust-num">+500</div>
+                    <p class="micro">Aventureiros Guiados</p>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <div class="trust-num">100%</div>
+                    <p class="micro">Guias Locais</p>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <div class="trust-num serif italic">Lixo Zero</div>
+                    <p class="micro">Compromisso Ambiental</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ============ HEADER FIXO ============ -->
     <header class="fixed w-full z-50 bg-cream/90 backdrop-blur-md border-b divide-line">
@@ -568,7 +731,7 @@
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6 text-center">
                 <div class="reveal md:border-r divide-line">
-                    <div class="stat-num">4.9<i class="fas fa-star text-amber-400 text-lg align-top ml-1"></i></div>
+                    <div class="stat-num">5<i class="fas fa-star text-amber-400 text-lg align-top ml-1"></i></div>
                     <p class="micro text-stone-500 mt-3 text-[.6rem]">Nota no Google</p>
                 </div>
                 <div class="reveal md:border-r divide-line">
@@ -643,38 +806,7 @@
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal, .step-reveal').forEach(el => revealObserver.observe(el));
-
-        // Efeito "passos" — pegadas caminham sobre as fotos dos roteiros ao aparecerem
-        (function () {
-            const imgs = document.querySelectorAll('.detail-img');
-            if (!imgs.length) return;
-            imgs.forEach(box => {
-                const trail = document.createElement('div');
-                trail.className = 'foot-trail';
-                const N = 6;
-                for (let i = 0; i < N; i++) {
-                    const t = i / (N - 1);
-                    const f = document.createElement('i');
-                    f.className = 'fas fa-shoe-prints';
-                    f.style.left = (14 + t * 60) + '%';
-                    f.style.top = (82 - t * 58) + '%';
-                    f.style.setProperty('--r', (35 + (i % 2 ? 12 : -8)) + 'deg');
-                    f.style.animationDelay = (i * 0.16) + 's';
-                    trail.appendChild(f);
-                }
-                box.appendChild(trail);
-            });
-            const footObs = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.querySelector('.foot-trail')?.classList.add('go');
-                        footObs.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.35 });
-            imgs.forEach(box => footObs.observe(box));
-        })();
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         // Selo "Free Google Reviews Widget" do Elfsight.
         // O Elfsight força o selo visível com estilo inline !important, então em vez de
@@ -697,39 +829,81 @@
             var n = 0, iv = setInterval(function () { hideBadge(); if (++n > 30) clearInterval(iv); }, 1000);
         })();
 
-        // Trilha de progresso — caminhada ao rolar (celular e computador)
+        // Reserva rápida — escolher passeio, data, pessoas e nome → mensagem pronta no WhatsApp
         (function () {
-            const trek = document.getElementById('trek-progress');
-            if (!trek) return;
-            const hiker = trek.querySelector('.trek-hiker');
-            const fill = trek.querySelector('.trek-fill');
-            const printsWrap = trek.querySelector('.trek-prints');
-            const N = 16, prints = [];
-            for (let i = 1; i <= N; i++) {
-                const p = document.createElement('i');
-                p.className = 'fas fa-shoe-prints trek-print';
-                const pos = i / (N + 1);
-                p.style.top = (pos * 100) + '%';
-                p.dataset.pos = pos;
-                p.style.transform = 'translate(calc(-50% + ' + (i % 2 ? 6 : -6) + 'px), -50%) rotate(' + (i % 2 ? 25 : -25) + 'deg)';
-                printsWrap.appendChild(p);
-                prints.push(p);
+            const booking = document.getElementById('booking');
+            if (!booking) return;
+            const toggle = document.getElementById('bookingToggle');
+            const grid = document.getElementById('tourGrid');
+            const dateInput = document.getElementById('bookingDate');
+            const nameInput = document.getElementById('bookingName');
+            const peopleInput = document.getElementById('bookingPeople');
+            const submitBtn = document.getElementById('bookingSubmit');
+            const hint = booking.querySelector('.booking-hint');
+            let selectedTour = null;
+
+            dateInput.min = new Date().toISOString().split('T')[0];
+
+            function openCalendar() {
+                if (typeof dateInput.showPicker === 'function') {
+                    try { dateInput.showPicker(); } catch (e) {}
+                }
             }
-            let idle;
-            function onScroll() {
-                const doc = document.documentElement;
-                const max = doc.scrollHeight - doc.clientHeight;
-                const percent = max > 0 ? Math.min(1, doc.scrollTop / max) : 0;
-                hiker.style.top = (percent * 100) + '%';
-                fill.style.height = (percent * 100) + '%';
-                for (const p of prints) p.classList.toggle('active', parseFloat(p.dataset.pos) <= percent);
-                trek.classList.add('show', 'walking');
-                clearTimeout(idle);
-                idle = setTimeout(() => trek.classList.remove('walking'), 200);
+            dateInput.addEventListener('click', openCalendar);
+            dateInput.addEventListener('focus', openCalendar);
+
+            toggle.addEventListener('click', () => {
+                const open = booking.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            grid.querySelectorAll('.tour-pick').forEach(card => {
+                const select = () => {
+                    grid.querySelectorAll('.tour-pick').forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-pressed', 'false'); });
+                    card.classList.add('selected');
+                    card.setAttribute('aria-pressed', 'true');
+                    selectedTour = card.dataset.name;
+                    validate();
+                };
+                card.addEventListener('click', select);
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); }
+                });
+            });
+
+            function validate() {
+                const ok = !!(selectedTour && dateInput.value && nameInput.value.trim() && Number(peopleInput.value) > 0);
+                submitBtn.disabled = !ok;
+                hint.textContent = ok
+                    ? 'Tudo pronto! Confirme pelo WhatsApp.'
+                    : (!selectedTour ? 'Selecione um roteiro para continuar' : 'Preencha data, nome e nº de pessoas');
             }
-            window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('resize', onScroll);
-            setTimeout(() => { trek.classList.add('show'); onScroll(); }, 4200);
+            [dateInput, nameInput, peopleInput].forEach(el => el.addEventListener('input', validate));
+
+            submitBtn.addEventListener('click', () => {
+                if (submitBtn.disabled) return;
+                const dataFmt = new Date(dateInput.value + 'T00:00:00').toLocaleDateString('pt-BR');
+                const msg = 'Olá, me chamo ' + nameInput.value.trim() + '! Quero reservar um passeio com a Treki Turismo:\n\n' +
+                    'Passeio: ' + selectedTour + '\n' +
+                    'Data: ' + dataFmt + '\n' +
+                    'Pessoas: ' + peopleInput.value;
+                window.open('https://wa.me/5531972364489?text=' + encodeURIComponent(msg), '_blank');
+            });
+        })();
+
+        // Botão "Salvar Contato" — gera um vCard (.vcf) para adicionar a Treki na agenda do celular
+        (function () {
+            const btn = document.getElementById('saveContact');
+            if (!btn) return;
+            const vcard = 'BEGIN:VCARD\r\n' +
+                'VERSION:3.0\r\n' +
+                'FN:Treki Turismo\r\n' +
+                'ORG:Treki Turismo\r\n' +
+                'TEL;TYPE=CELL,VOICE:+5531972364489\r\n' +
+                'ADR;TYPE=WORK:;;R. São José, 14 - Centro;Ouro Preto;MG;35400-000;Brasil\r\n' +
+                'URL:https://www.instagram.com/trekiturismo\r\n' +
+                'END:VCARD\r\n';
+            btn.setAttribute('href', 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcard));
         })();
 
         // Pássaros sobrevoando as montanhas + pólen no ar
